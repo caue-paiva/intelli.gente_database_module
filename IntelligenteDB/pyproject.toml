@@ -1,0 +1,8 @@
+[project]
+name = "intelligenteDB"
+version = "0.0.1"
+description = "Módulo para a criação do DB/Data Warehouse para o projeto Intelligente e as APIs de Query e Insert no DB"
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"

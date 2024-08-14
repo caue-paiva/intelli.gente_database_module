@@ -1,0 +1,6 @@
+/db_env
+*.env
+*.xlsx
+*.env
+*.egg-info
+__pycache__/
