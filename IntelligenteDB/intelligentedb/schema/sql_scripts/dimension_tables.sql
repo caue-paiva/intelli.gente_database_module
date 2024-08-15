@@ -2,7 +2,7 @@ CREATE TYPE FORMA_EXTRACAO AS ENUM ('api','webscrapping','ftp');
 
 CREATE TABLE IF NOT EXISTS dimensao_dado (
   dado_id SERIAL PRIMARY KEY,
-  nome_dado VARCHAR(100) NOT NULL,
+  nome_dado VARCHAR(200) NOT NULL,
   topico VARCHAR(50) NOT NULL, --topico do dado, é tambem o nome da tabela que vamos utilizar para carregar os dados
   orgao_fonte VARCHAR(50), -- orgão do governo 
   forma_extracao FORMA_EXTRACAO, --enum para forma de extração dos dados

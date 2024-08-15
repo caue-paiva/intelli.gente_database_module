@@ -2,6 +2,7 @@ from intelligentedb.schema.insertdimensions import insert_indicators_and_datapoi
 from intelligentedb.schema.datastructures import  Indicator, DataPoint, DataPointIndicatorMap
 from intelligentedb.schema.tablecreation import create_datapoints_dimension,create_indicators_dimension,create_junction_table,create_user_dtypes
 from intelligentedb import DBconnection
+from intelligentedb.schema.base_schema_files import get_base_dimension_vals
 
 def test_dimension_and_junction_tables()->None:
    indicators = [
@@ -75,4 +76,10 @@ def test_dimension_and_junction_tables()->None:
 
 
 if __name__ == "__main__":
-   test_dimension_and_junction_tables()
+   city_dimension_vals:tuple[tuple,list] = get_base_dimension_vals('indicador')
+
+   result = DBconnection.insert_many_values(
+      "teste_indicador2",
+      city_dimension_vals[0],
+      city_dimension_vals[1]
+   )

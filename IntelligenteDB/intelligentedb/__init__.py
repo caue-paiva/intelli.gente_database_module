@@ -3,6 +3,7 @@ from psycopg2.extensions import connection,cursor
 from dotenv import load_dotenv
 from contextlib import contextmanager 
 from typing import Generator,Any
+from functools import reduce
 import atexit
 
 load_dotenv(os.path.join(os.path.dirname(__file__), "db_connection.env"))
@@ -19,7 +20,6 @@ class DBconnection():
             user=os.getenv("DB_USERNAME"),
             password=os.getenv("DB_PASSWORD")
          )
-         print("connection created")
       return cls.__CONNECTION
    
    @classmethod
@@ -49,11 +49,9 @@ class DBconnection():
         print(f"pgerror: {e.pgerror}")
         if e.diag:
             print(f"diag message primary: {e.diag.message_primary}")
-        
         if rollback_on_exception:
             cls.__CONNECTION.rollback()
             print("Transaction rolled back due to the error.")
-        
         raise
       finally:
          cursor.close()  # garante que o cursor é fechado
@@ -70,6 +68,37 @@ class DBconnection():
       if not query_result and return_data:
          raise RuntimeError(f"Falha ao executar a Query: {query}")
       return query_result
+   
+   @classmethod
+   def insert_many_values(
+      cls,
+      table_name:str,
+      columns_tuple:tuple,
+      values_list:list[tuple],
+      batch_size: int = 500    
+   )->None:
+      if cls.__CONNECTION is None: #cria uma conexão caso seja necessário
+         cls.__CONNECTION = cls.get_connection()
+         
+      columns = ", ".join(columns_tuple)
+      with cls.get_cursor() as c:
+        for i in range(0, len(values_list), batch_size):
+            batch_values = values_list[i:i + batch_size] #cria um lote de valores para inserir
+            placeholders = ", ".join( #join entre cada tupla de valores para inserir com a virgula no final de cada, executa isso o numero de elementos no lote vezes
+                ["(" + ", ".join(["%s"] * len(columns_tuple)) + ")"] * len(batch_values) #cria a tupla de valores para inserir, cada um no estilo (%s,%s,%s)
+            )
+
+            flattened_values = [item for sublist in batch_values for item in sublist] #cria uma lista pegando cada item de cada tupla na lista
+            query = f"INSERT INTO {table_name} ({columns}) VALUES {placeholders};" #cria a query
+            try:
+                c.execute(query, flattened_values)
+            except psycopg2.Error as e:
+               print(f"Database error: {e.pgerror}")
+               cls.__CONNECTION.rollback()
+               raise
+        cls.__CONNECTION.commit()  # Commit the transaction after all inserts
+     
+
    
 atexit.register(DBconnection.close_connection) # type: ignore #fecha a conexão quando o programa parar de executar
 

@@ -1,0 +1,36 @@
+nome_dado,topico,orgao_fonte,forma_extracao,anos_serie_historica
+PIB Agropecuária,PIB,IBGE,api,{}
+PIB Indústria,PIB,IBGE,api,{}
+PIB Serviços,PIB,IBGE,api,{}
+PIB Administração Pública,PIB,IBGE,api,{}
+PIB TOTAL,PIB,IBGE,api,{}
+PIB per capita,PIB,IBGE,webscrapping,{}
+População estimada muni,Porte,IBGE,api,{}
+Domicílios particulares permanentes,Urbanização Vias Públicas,IBGE,api,{}
+Domicílios particulares permanentes com existência de calçamento/pavimentação da rua,Urbanização Vias Públicas,IBGE,api,{}
+Índice de GINI da renda domiciliar per capita,Desigualdade de Renda,DATASUS,webscrapping,{}
+Taxa de analfabetismo,Educação,DATASUS,webscrapping,{}
+obitos maternos,Saúde,DATASUS,webscrapping,{}
+NVBP: Nascidos Vivos com Baixo Peso,Saúde,DATASUS,webscrapping,{}
+NVPN: Nascidos Vivos com Baixo Pré-Natal,Saúde,DATASUS,webscrapping,{}
+Leitos hospitalares na rede pública municipal,Saúde,DATASUS,webscrapping,{}
+nascidos vivos,Saúde,DATASUS,webscrapping,{}
+Médicos disponíveis na rede pública municipal,Saúde,DATASUS,webscrapping,{}
+População ocupada com vínculo formal,Emprego,IBGE/RAIS,webscrapping,{}
+Capacidade de pagamento dos municípios (CAPAG),Finanças Públicas,SISTEMA DO TESOURO NACIONAL,webscrapping,{}
+Taxa de homicídios,Segurança Pública,IPEA,api,{}
+Índice de desenvolvimento humano do município (IDH-M),IDH-M,ATLAS DO DESENVOLVIMENTO HUMANO,webscrapping,{}
+IN015_AE - Índice de coleta de esgoto,Água e Esgoto,SNIS,webscrapping,{}
+IN015_RS - Taxa de cobertura do serviço de coleta de resíduo doméstico em relação à população total do município,Resíduos Sólidos,SNIS,webscrapping,{}
+IN022_AE - Consumo médio percapita de água,Água e Esgoto,SNIS,webscrapping,{}
+IN049_AE - Índice de perdas na distribuição,Água e Esgoto,SNIS,webscrapping,{}
+IN055_AE - Índice de atendimento total de água,Água e Esgoto,SNIS,webscrapping,{}
+CS001 - Existe coleta seletiva formalizada pela prefeitura no município?,Resíduos Sólidos,SNIS,webscrapping,{}
+IN056_AE - Índice de atendimento total de esgoto referido aos municípios atendidos com água,Água e Esgoto,SNIS,webscrapping,{}
+IN024_AE - Índice de atendimento urbano de esgoto referido aos municípios atendidos com água,Água e Esgoto,SNIS,webscrapping,{}
+IN053_RS - Taxa de material recolhido pela coleta seletiva (exceto mat. orgânica) em relação à quantidade total coletada de resíduos sólidos domésticos,Resíduos Sólidos,SNIS,webscrapping,{}
+IN016_AE - Índice de tratamento de esgoto,Água e Esgoto,SNIS,webscrapping,{}
+Nível da Hierarquia para as Regiões de Influência das Cidades (VAR09),Arranjos Urbanos,IBGE,webscrapping,{}
+Classe Denominação da Hierarquia para as Regiões de Influência das Cidades (VAR10),Arranjos Urbanos,IBGE,webscrapping,{}
+Escala de acesso a banda larga fixa,Infraestrutura de Conectividade,ANATEL,api,{}
+Escala de acesso a banda larga móvel,Infraestrutura de Conectividade,ANATEL,api,{}

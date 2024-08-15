@@ -2,7 +2,6 @@ from intelligentedb import DEFAULT_VAL_INT_COLS,DEFAULT_VAL_STR_COLS
 from typing import Literal
 from dataclasses import dataclass, field
 
-
 @dataclass
 class Indicator:
     dimensao: str
