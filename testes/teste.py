@@ -1,6 +1,11 @@
-from intelligentedb.schema import get_table_names,table_exists,get_table_num_rows
+from intelligentedb.schema.insertdimensions import insert_new_datapoint
 
 if __name__ == "__main__":
-   print(table_exists("teste"))
-   print(table_exists("teste2"))
+   insert_new_datapoint(
+      "a",
+      "a",
+      "a",
+      "api",
+      [1990,2000]
+   )
    

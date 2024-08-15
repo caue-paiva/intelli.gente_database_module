@@ -30,7 +30,7 @@ class DBconnection():
     
    @classmethod
    @contextmanager
-   def get_cursor(cls)->Generator[cursor,Any,Any]:
+   def get_cursor(cls,rollback_on_exception:bool=True)->Generator[cursor,Any,Any]:
       """
       context manager para gerenciar cursores da conexão com BD
       Ex:
@@ -42,9 +42,13 @@ class DBconnection():
          cls.__CONNECTION = cls.get_connection()
       cursor = cls.__CONNECTION.cursor()
       try:
-            yield cursor  # Provide the cursor to the context
+         yield cursor  # da o cursor para o context
+      except:
+         if rollback_on_exception: #roolback da transação caso ocorra uma exceção
+            cls.__CONNECTION.rollback()
       finally:
-            cursor.close()  # Ensure the cursor is closed
+         cursor.close()  # garante que o cursor é fechado
+            
 
    @classmethod
    def execute_query(cls,query:str)->list[tuple]:
@@ -52,9 +56,15 @@ class DBconnection():
       with cls.get_cursor() as c:
          c.execute(query)
          query_result = c.fetchall()
+         cls.__CONNECTION.commit() # type: ignore
       if query_result is None:
          raise RuntimeError(f"Falha ao executar a Query: {query}")
       return query_result
    
 atexit.register(DBconnection.close_connection) # type: ignore #fecha a conexão quando o programa parar de executar
-from . import DBconnection
+
+DEFAULT_VAL_STR_COLS = 'n/a'
+DEFAULT_VAL_INT_COLS = -1
+
+
+from . import DBconnection,DEFAULT_VAL_STR_COLS,DEFAULT_VAL_INT_COLS

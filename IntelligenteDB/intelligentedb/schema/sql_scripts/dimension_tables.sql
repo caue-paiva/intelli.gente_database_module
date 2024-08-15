@@ -1,4 +1,4 @@
-CREATE TYPE FORMA_EXTRACAO AS ENUM ("API","WEBSCRAPPING","FTP");
+CREATE TYPE FORMA_EXTRACAO AS ENUM ("api","webscrapping","ftp");
 
 CREATE TABLE IF NOT EXISTS dimensao_dado (
   dado_id SERIAL PRIMARY KEY,
@@ -13,21 +13,21 @@ CREATE TABLE IF NOT EXISTS dimensao_dado (
 CREATE TABLE IF NOT EXISTS dimensao_municipio (
    municipio_id SERIAL PRIMARY KEY,
    
-   numero_uf_ibge INTEGER NOT NULL, --número da UF segundo o IBGE
-   nome_uf VARCHAR(50) NOT NULL, --nome e sigla da UF
+   numero_uf_ibge INTEGER DEFAULT -1, --número da UF segundo o IBGE
+   nome_uf VARCHAR(50) NOT NULL, --nome e sigla da UF, esses são obrigatórios 
    sigla_uf VARCHAR(2) NOT NULL,
 
-   numero_regiao_geografica_intermediaria INTEGER, --numero de divisões geográficas segundo o IBGE
-   nome_regiao_geografica_intermediaria VARCHAR(100),
+   numero_regiao_geografica_intermediaria INTEGER DEFAULT -1, --numero de divisões geográficas segundo o IBGE
+   nome_regiao_geografica_intermediaria VARCHAR(100) DEFAULT 'n/a',
    
-   numero_regiao_geografica_imediata INTEGER,
-   nome_regiao_geografica_imediata VARCHAR(100),
+   numero_regiao_geografica_imediata INTEGER DEFAULT -1,
+   nome_regiao_geografica_imediata VARCHAR(100) DEFAULT 'n/a',
    
-   numero_mesorregiao_geografica INTEGER,
-   nome_mesorregiao_geografica VARCHAR(100),
+   numero_mesorregiao_geografica INTEGER DEFAULT -1,
+   nome_mesorregiao_geografica VARCHAR(100) DEFAULT 'n/a',
    
-   numero_microrregiao_geografica INTEGER,
-   nome_microrregiao_geografica VARCHAR(100),
+   numero_microrregiao_geografica INTEGER DEFAULT -1,
+   nome_microrregiao_geografica VARCHAR(100) DEFAULT 'n/a',
 
    codigo_municipio INTEGER NOT NULL CONSTRAINT codigo_munic_7_digitos CHECK (codigo_municipio BETWEEN 1000000 AND 9999999), --código do município do IBGE, um inteiro de 7 dígitos
    nome_municipio VARCHAR(100) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS dimensao_indicador(
   relevancia RELEVANCIA_INDICADOR DEFAULT 'n/a', --valor caso a relevância não exista
   peso_estatistico INTEGER DEFAULT -1,
   texto_explicativo_indicador TEXT, --texto por conter um parágrafo mais longo
-  instituicao_fonte_dados VARCHAR(100)
+  instituicao_fonte_dados VARCHAR(100) NOT NULL
 );
 
 --tabela de junção entre indicador e dados, para modelar a relação many-to-many deles
