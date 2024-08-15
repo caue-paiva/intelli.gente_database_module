@@ -1,16 +1,16 @@
 from intelligentedb import DBconnection
 
-def define_user_dtypes()->None:
+def create_user_dtypes()->None:
    """
    Cria tipos de dados definidos pelo usuário, necessário para executar as outras funções
    """
    query = """
-      CREATE TYPE TIPO_INDICADOR AS ENUM ('principal','adicional');
+      CREATE TYPE TIPO_INDICADOR AS ENUM ('principal','adicional','n/a');
       CREATE TYPE RELEVANCIA_INDICADOR AS ENUM ('alta','media','baixa','n/a');
       CREATE TYPE TIPO_DADOS_EXTRAIDOS AS ENUM ('int','float','str','bool');
-      CREATE TYPE FORMA_EXTRACAO AS ENUM ("API","WEBSCRAPPING","FTP");
+      CREATE TYPE FORMA_EXTRACAO AS ENUM ('api','webscrapping','ftp');
    """
-   DBconnection.execute_query(query)
+   DBconnection.execute_query(query,return_data=False)
 
 def create_city_dimension()->None:
    """
@@ -42,7 +42,7 @@ def create_city_dimension()->None:
       nome_regiao_nacional VARCHAR(50) NOT NULL --uma das 5 regiões do brasil
    );
    """
-   DBconnection.execute_query(query)
+   DBconnection.execute_query(query,return_data=False)
 
 def create_datapoints_dimension()->None:
    """
@@ -55,11 +55,10 @@ def create_datapoints_dimension()->None:
       topico VARCHAR(50) NOT NULL, --topico do dado, é tambem o nome da tabela que vamos utilizar para carregar os dados
       orgao_fonte VARCHAR(50), -- orgão do governo 
       forma_extracao FORMA_EXTRACAO, --enum para forma de extração dos dados
-      fonte_extracao VARCHAR (250), -- fonte dos dados, ou nome da api ou link
       anos_serie_historica INTEGER ARRAY --lista de anos de série histórica que os dados tem
    );
    """
-   DBconnection.execute_query(query)
+   DBconnection.execute_query(query,return_data=False)
 
 def create_indicators_dimension()->None:
    """
@@ -72,7 +71,6 @@ def create_indicators_dimension()->None:
       subdimensao VARCHAR(100) DEFAULT 'n/a', --subdimensão não é necessário e em vários indicadores ela é nula
       topico VARCHAR(100) NOT NULL, --Tópico não pode ser nulo, pois ele dá nome à tabela que contém os dados
       nome_indicador VARCHAR(150) NOT NULL,
-      
       nivel_indicador INTEGER DEFAULT -1, --caso não exista o padrão é -1
       tipo TIPO_INDICADOR DEFAULT 'n/a',
       relevancia RELEVANCIA_INDICADOR DEFAULT 'n/a', --valor caso a relevância não exista
@@ -81,7 +79,7 @@ def create_indicators_dimension()->None:
       instituicao_fonte_dados VARCHAR(100)
    );
    """
-   DBconnection.execute_query(query)
+   DBconnection.execute_query(query,return_data=False)
 
 def create_junction_table()->None:
    """
@@ -96,7 +94,7 @@ def create_junction_table()->None:
       PRIMARY KEY (dado_id, indicador_id) --guarante que a combinação desses dados é única, ou seja não podem existir linhas duplicadas 
    );
    """
-   DBconnection.execute_query(query)
+   DBconnection.execute_query(query,return_data=False)
 
 def create_fact_table(table_or_topic_name:str)->None:
    query = f"""--sql
@@ -111,4 +109,4 @@ def create_fact_table(table_or_topic_name:str)->None:
       valor VARCHAR(50) NOT NULL -- valor será guardado como string e extraído conforme o tipo acima
    );
    """
-   DBconnection.execute_query(query)
+   DBconnection.execute_query(query,return_data=False)

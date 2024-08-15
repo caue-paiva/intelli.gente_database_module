@@ -43,21 +43,31 @@ class DBconnection():
       cursor = cls.__CONNECTION.cursor()
       try:
          yield cursor  # da o cursor para o context
-      except:
-         if rollback_on_exception: #roolback da transação caso ocorra uma exceção
+      except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        print(f"pgcode: {e.pgcode}")
+        print(f"pgerror: {e.pgerror}")
+        if e.diag:
+            print(f"diag message primary: {e.diag.message_primary}")
+        
+        if rollback_on_exception:
             cls.__CONNECTION.rollback()
+            print("Transaction rolled back due to the error.")
+        
+        raise
       finally:
          cursor.close()  # garante que o cursor é fechado
             
 
    @classmethod
-   def execute_query(cls,query:str)->list[tuple]:
-      query_result:list|None = None
+   def execute_query(cls,query:str,return_data:bool=True)->list[tuple]:
+      query_result:list = []
       with cls.get_cursor() as c:
          c.execute(query)
-         query_result = c.fetchall()
+         if return_data:
+            query_result = c.fetchall()
          cls.__CONNECTION.commit() # type: ignore
-      if query_result is None:
+      if not query_result and return_data:
          raise RuntimeError(f"Falha ao executar a Query: {query}")
       return query_result
    
