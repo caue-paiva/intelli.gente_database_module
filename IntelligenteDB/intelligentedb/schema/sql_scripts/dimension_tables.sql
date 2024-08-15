@@ -1,6 +1,6 @@
 CREATE TYPE FORMA_EXTRACAO AS ENUM ("API","WEBSCRAPPING","FTP");
 
-CREATE TABLE dimensao_dados (
+CREATE TABLE IF NOT EXISTS dimensao_dados (
   dado_id SERIAL PRIMARY KEY,
   nome_dado VARCHAR(100) NOT NULL,
   topico VARCHAR(50) NOT NULL, --topico do dado, é tambem o nome da tabela que vamos utilizar para carregar os dados
@@ -10,7 +10,7 @@ CREATE TABLE dimensao_dados (
   anos_serie_historica INTEGER ARRAY --lista de anos de série histórica que os dados tem
 );
 
-CREATE TABLE dimensao_municipio (
+CREATE TABLE IF NOT EXISTS dimensao_municipio (
    municipio_id SERIAL PRIMARY KEY,
    
    numero_uf_ibge INTEGER NOT NULL, --número da UF segundo o IBGE
@@ -38,7 +38,7 @@ CREATE TABLE dimensao_municipio (
 CREATE TYPE TIPO_INDICADOR AS ENUM ('principal','adicional');
 CREATE TYPE RELEVANCIA_INDICADOR AS ENUM ('alta','media','baixa','n/a');
 
-CREATE TABLE dimensao_indicador(
+CREATE TABLE IF NOT EXISTS dimensao_indicador(
   indicador_id SERIAL PRIMARY KEY,
   dimensao VARCHAR(100) NOT NULL,
   subdimensao VARCHAR(100) DEFAULT 'n/a', --subdimensão não é necessário e em vários indicadores ela é nula
