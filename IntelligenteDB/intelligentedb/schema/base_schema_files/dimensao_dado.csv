@@ -5,7 +5,7 @@ PIB Serviços,PIB,IBGE,api,{}
 PIB Administração Pública,PIB,IBGE,api,{}
 PIB TOTAL,PIB,IBGE,api,{}
 PIB per capita,PIB,IBGE,webscrapping,{}
-População estimada muni,Porte,IBGE,api,{}
+População total estimada do município,Porte,IBGE,api,{}
 Domicílios particulares permanentes,Urbanização Vias Públicas,IBGE,api,{}
 Domicílios particulares permanentes com existência de calçamento/pavimentação da rua,Urbanização Vias Públicas,IBGE,api,{}
 Índice de GINI da renda domiciliar per capita,Desigualdade de Renda,DATASUS,webscrapping,{}

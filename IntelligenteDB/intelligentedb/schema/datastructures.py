@@ -27,3 +27,5 @@ class DataPoint:
 class DataPointIndicatorMap:
    data_point:str
    indicator:str
+   data_point_pk:int = -1
+   indicator_pk:int = -1

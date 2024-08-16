@@ -1,0 +1,37 @@
+data_point,indicator
+PIB Agropecuária,PIB Agropecuária
+PIB Indústria,PIB Indústria
+PIB Serviços,PIB Serviços
+PIB Administração Pública,PIB Administração Pública  
+PIB TOTAL,
+PIB per capita,PIB per capita do município
+População total estimada do município,População total estimada do município
+Domicílios particulares permanentes,Índice de pavimentação das vias públicas 
+Domicílios particulares permanentes com existência de calçamento/pavimentação da rua,Índice de pavimentação das vias públicas 
+Índice de GINI da renda domiciliar per capita,Índice de GINI da renda domiciliar per capita
+Taxa de analfabetismo,Taxa de analfabetismo
+obitos maternos,Mortalidade materna
+NVBP: Nascidos Vivos com Baixo Peso,Índice de risco e proteção à saúde dos nascidos vivos 
+NVPN: Nascidos Vivos com Baixo Pré-Natal,Índice de risco e proteção à saúde dos nascidos vivos 
+Leitos hospitalares na rede pública municipal,Leitos hospitalares na rede pública municipal  
+nascidos vivos,Mortalidade materna
+nascidos vivos,Índice de risco e proteção à saúde dos nascidos vivos 
+Médicos disponíveis na rede pública municipal,Médicos disponíveis na rede pública municipal
+População ocupada com vínculo formal,População ocupada com vínculo formal 
+Capacidade de pagamento dos municípios (CAPAG),Capacidade de pagamento dos municípios (CAPAG)
+Taxa de homicídios,Taxa de homicídios
+Índice de desenvolvimento humano do município (IDH-M),Índice de desenvolvimento humano do município (IDH-M) 
+IN015_AE - Índice de coleta de esgoto,Índice de volume de esgoto coletado 
+IN015_RS - Taxa de cobertura do serviço de coleta de resíduo doméstico em relação à população total do município,Taxa da população coberta com serviço de coleta de resíduos
+IN022_AE - Consumo médio percapita de água,Consumo médio per capita de água
+IN049_AE - Índice de perdas na distribuição,Índice de perdas na distribuição de água 
+IN055_AE - Índice de atendimento total de água,Índice da população total com atendimento de água 
+CS001 - Existe coleta seletiva formalizada pela prefeitura no município?,Coleta seletiva de resíduos no município
+IN056_AE - Índice de atendimento total de esgoto referido aos municípios atendidos com água,Índice da população total com atendimento de esgoto 
+IN024_AE - Índice de atendimento urbano de esgoto referido aos municípios atendidos com água,Índice da população urbana com atendimento de esgoto
+IN053_RS - Taxa de material recolhido pela coleta seletiva (exceto mat. orgânica) em relação à quantidade total coletada de resíduos sólidos domésticos,Percentual de material recolhido pela coleta seletiva
+IN016_AE - Índice de tratamento de esgoto,Índice de volume de esgoto tratado
+Nível da Hierarquia para as Regiões de Influência das Cidades (VAR09),Rede de influência da cidade
+Classe Denominação da Hierarquia para as Regiões de Influência das Cidades (VAR10),Rede de influência da cidade
+Escala de acesso a banda larga fixa,Escala de acesso a banda larga fixa 
+Escala de acesso a banda larga móvel,Escala de acesso a banda larga móvel 

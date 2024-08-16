@@ -1,8 +1,6 @@
 from intelligentedb import DBconnection
 from intelligentedb.schema.datastructures import Indicator,DataPoint,DataPointIndicatorMap
 
-
-
 def insert_new_city(
     codigo_municipio: int,
     nome_municipio: str,

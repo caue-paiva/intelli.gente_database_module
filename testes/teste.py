@@ -1,48 +1,48 @@
 from intelligentedb.schema.insertdimensions import insert_indicators_and_datapoints
 from intelligentedb.schema.datastructures import  Indicator, DataPoint, DataPointIndicatorMap
-from intelligentedb.schema.tablecreation import create_datapoints_dimension,create_indicators_dimension,create_junction_table,create_user_dtypes
+from intelligentedb.schema.tablecreation import create_datapoints_dimension,create_indicators_dimension,create_junction_table,create_user_dtypes,create_city_dimension
 from intelligentedb import DBconnection
-from intelligentedb.schema.base_schema_files import get_base_dimension_vals
+from intelligentedb.schema.base_schema_files import fill_junction_table_base_vals, fill_dimension_tables_base_vals
 
 def test_dimension_and_junction_tables()->None:
    indicators = [
       Indicator(
          dimensao="Economia",
          topico="PIB",
-         nome_indicador="Crescimento do PIB",
+         nome_indicador="indicador_teste1",
          instituicao_fonte_dados="IBGE"
       ),
       Indicator(
          dimensao="Demografia",
          topico="População",
-         nome_indicador="Censo Populacional",
+         nome_indicador="indicador_teste2",
          instituicao_fonte_dados="IBGE"
       ),
       Indicator(
          dimensao="Saúde",
          topico="Expectativa de Vida",
-         nome_indicador="Expectativa de Vida ao Nascer",
+         nome_indicador="indicador_teste3",
          instituicao_fonte_dados="Ministério da Saúde"
       )
    ]
 
    data_points = [
       DataPoint(
-         nome_dado="Censo Populacional",
+         nome_dado="dado_teste1",
          topico="Demografia",
          orgao_fonte="IBGE",
          forma_extracao="api",
          anos_serie_historica=[2000, 2010, 2020]
       ),
       DataPoint(
-         nome_dado="PIB Anual",
+         nome_dado="dado_teste2",
          topico="Economia",
          orgao_fonte="IBGE",
          forma_extracao="ftp",
          anos_serie_historica=[2000, 2005, 2010]
       ),
       DataPoint(
-         nome_dado="Expectativa de Vida",
+         nome_dado="dado_teste3",
          topico="Saúde",
          orgao_fonte="Ministério da Saúde",
          forma_extracao="webscrapping",
@@ -51,17 +51,12 @@ def test_dimension_and_junction_tables()->None:
    ]
       
    indicators_data_points_mapping = [
-      DataPointIndicatorMap(data_point='PIB Anual', indicator='Crescimento do PIB'),
-      DataPointIndicatorMap(data_point='Censo Populacional', indicator='Crescimento do PIB'),
-      DataPointIndicatorMap(data_point='Censo Populacional', indicator='Censo Populacional'),
-      DataPointIndicatorMap(data_point='Expectativa de Vida', indicator='Expectativa de Vida ao Nascer'),
-      DataPointIndicatorMap(data_point='Expectativa de Vida', indicator='Censo Populacional'),
+      DataPointIndicatorMap(data_point='dado_teste1', indicator='indicador_teste1'),
+      DataPointIndicatorMap(data_point='dado_teste2', indicator='indicador_teste1'),
+      DataPointIndicatorMap(data_point='dado_teste2', indicator='indicador_teste2'),
+      DataPointIndicatorMap(data_point='dado_teste3', indicator='indicador_teste3'),
+      DataPointIndicatorMap(data_point='dado_teste3', indicator='indicador_teste2'),
    ]
-
-   #create_user_dtypes()
-   create_datapoints_dimension()
-   create_indicators_dimension()
-   create_junction_table()
 
    insert_indicators_and_datapoints(
       indicators=indicators,
@@ -73,13 +68,21 @@ def test_dimension_and_junction_tables()->None:
    SELECT * FROM juncao_dados_indicador;
    """)
    print(output)
+   
+
+
+
+def complete_test():
+  create_datapoints_dimension()
+  create_indicators_dimension()
+  create_city_dimension()
+  create_junction_table()
+  fill_dimension_tables_base_vals('dado')
+  fill_dimension_tables_base_vals('indicador')
+  fill_dimension_tables_base_vals('municipio')
+  fill_junction_table_base_vals()
+
 
 
 if __name__ == "__main__":
-   city_dimension_vals:tuple[tuple,list] = get_base_dimension_vals('indicador')
-
-   result = DBconnection.insert_many_values(
-      "teste_indicador2",
-      city_dimension_vals[0],
-      city_dimension_vals[1]
-   )
+   test_dimension_and_junction_tables()

@@ -43,6 +43,8 @@ def create_city_dimension()->None:
    );
    """
    DBconnection.execute_query(query,return_data=False)
+   print("Tabela da dimensão de municipios criada")
+
 
 def create_datapoints_dimension()->None:
    """
@@ -59,6 +61,7 @@ def create_datapoints_dimension()->None:
    );
    """
    DBconnection.execute_query(query,return_data=False)
+   print("Tabela da dimensão de dados criada")
 
 def create_indicators_dimension()->None:
    """
@@ -80,6 +83,8 @@ def create_indicators_dimension()->None:
    );
    """
    DBconnection.execute_query(query,return_data=False)
+   print("Tabela da dimensão de indicadores criada")
+
 
 def create_junction_table()->None:
    """
@@ -95,6 +100,8 @@ def create_junction_table()->None:
    );
    """
    DBconnection.execute_query(query,return_data=False)
+   print("Tabela de junção entre indicadores e dados criada")
+
 
 def create_fact_table(table_or_topic_name:str)->None:
    query = f"""--sql

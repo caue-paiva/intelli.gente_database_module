@@ -1,1 +1,1 @@
-from . get_dimension_vals import get_base_dimension_vals
+from .dimensions_base_vals import fill_junction_table_base_vals, fill_dimension_tables_base_vals
