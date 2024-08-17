@@ -3,7 +3,9 @@ from intelligentedb.schema.datastructures import  Indicator, DataPoint, DataPoin
 from intelligentedb.schema.tablecreation import create_datapoints_dimension,create_indicators_dimension,create_junction_table,create_user_dtypes,create_city_dimension
 from intelligentedb import DBconnection
 from intelligentedb.schema.base_schema_files import fill_junction_table_base_vals, fill_dimension_tables_base_vals
-from intelligentedb.etl import base_query
+from intelligentedb.etl import insert_df_into_fact_table
+import pandas as pd
+
 
 def test_dimension_and_junction_tables()->None:
    indicators = [
@@ -80,10 +82,26 @@ def recreate_tables():
   fill_dimension_tables_base_vals('municipio')
   fill_junction_table_base_vals()
 
-def etl_test():
-   pass
+def drop_all_tables():
+   """
+   Não rodar isso em produção :)
+   """
+   list_tables_query = """
+   SELECT table_name 
+   FROM information_schema.tables 
+   WHERE table_schema = 'public';
+   """
+   table_list = DBconnection.execute_query(list_tables_query)
+   for table in table_list:
+      table_name = table[0]
+      drop_query = f"DROP TABLE IF EXISTS {table_name} CASCADE;"
+      print(f"Dropping table: {table_name}")
+      DBconnection.execute_query(drop_query,False)
 
 
 if __name__ == "__main__":
-   recreate_tables()
-   test_dimension_and_junction_tables()
+   #val = get_datapoint_fact_table_info('Pib percapita')
+   #print(val)
+   df = pd.read_csv("datasus.csv")
+   time_series_years:list[int] = list(df["ano"].value_counts().index)
+   insert_df_into_fact_table(df=df,data_name="NVBP: Nascidos Vivos com Baixo Peso",time_series_years=time_series_years)

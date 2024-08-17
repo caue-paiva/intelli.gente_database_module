@@ -75,7 +75,7 @@ class DBconnection():
       table_name:str,
       columns_tuple:tuple,
       values_list:list[tuple],
-      batch_size: int = 500    
+      batch_size: int = 1500    
    )->None:
       if cls.__CONNECTION is None: #cria uma conexão caso seja necessário
          cls.__CONNECTION = cls.get_connection()

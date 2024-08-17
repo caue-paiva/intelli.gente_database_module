@@ -1,1 +1,1 @@
-from .etlqueries import base_query
+from .etl_operations import insert_df_into_fact_table

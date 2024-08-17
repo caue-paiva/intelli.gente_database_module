@@ -14,7 +14,7 @@ def normalize_text(input_str:str)->str:
 
 def parse_topic_table_name(data_topic:str)->str:
     """
-    Transforma o nome de um tópico de um indicador em um nome de tabela aceitado pelo PG SQL
+    Transforma o nome de um tópico de um indicador em um nome de tabela aceitado pelo PG SQL e padronizado, começando com fato_topico_
     """
     str_:str = remove_non_en_chars(data_topic)
    
@@ -26,5 +26,5 @@ def parse_topic_table_name(data_topic:str)->str:
     str_ = re.sub(r'[^a-zA-Z0-9_]', '', str_)
     
     #truncar para o tamanho max de um identificador do postgres
-    return str_[:63]
+    return f"fato_topico_{str_[:63]}"
     

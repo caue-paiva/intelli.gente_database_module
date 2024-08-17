@@ -62,39 +62,64 @@ CREATE TABLE IF NOT EXISTS juncao_dados_indicador (
 );
 
 
---query para acessar os dados de um indicador x
-
---subquery (1) de achar id do indicador
-SELECT indicador_id FROM dimensao_indicador
-WHERE dimensao_indicador.nome_indicador = 'nome_indicador';
-
---subquery (2), de achar os ids dos dados
-SELECT dado_id FROM juncao_dados_indicador
-WHERE juncao_dados_indicador.indicador_id = 'resultado da subquery 1';
-
---nessa query todos os dados na coluna topico vão ser iguais (devem)
-SELECT topico,dado_id,anos_serie_historica FROM 'tabela_subquery2'
-INNER JOIN dimensao_dado ON dimensao_dado.dado_id = 'tabela_subquery2'.dado_id;
-
-
---combinação das subqueries 1 e 2
-SELECT dado_id FROM juncao_dados_indicador
-INNER JOIN dimensao_indicador ON dimensao_indicador.indicador_id  = juncao_dados_indicador.indicador_id
-WHERE dimensao_indicador.nome_indicador = 'nome_indicador';
-
-
---query final 
-SELECT topico,dado_id,anos_serie_historica FROM dimensao_dado --começa a query da tabela de dimensões de dados. Seleciona essas 3 colunas
-INNER JOIN juncao_dados_indicador on juncao_dados_indicador.dado_id = dimensao_dado.dado_id --inner join com tabela de juncao 
-INNER JOIN dimensao_indicador ON dimensao_indicador.indicador_id = juncao_dados_indicador.indicador_id --inner join da tabela de juncao com tabela de indicadores
-WHERE dimensao_indicador.nome_indicador = 'nome_indicador'; --filtra pela nome do indicador
-
-
-
 --OBS usar queries de inserir com o RETURNING  para pegar a foreign key da inserção e criar a tabela de junção mais fácil
+
 INSERT INTO table_a (column1, column2, ...)
 VALUES (value1, value2, ...)
 RETURNING pk_column_name;
 
+--Queries de inserir nas tabelas de dimensão
 
---Tabelas de fato e queries associadas
+INSERT INTO dimensao_indicador (
+    dimensao,
+    subdimensao,
+    topico,
+    nome_indicador,
+    nivel_indicador,
+    tipo,
+    relevancia,
+    peso_estatistico,
+    texto_explicativo_indicador,
+    instituicao_fonte_dados
+) VALUES 
+      {values}
+RETURNING indicador_id;
+
+
+INSERT INTO dimensao_dado (
+      nome_dado,
+      topico,
+      orgao_fonte,
+      forma_extracao,
+      anos_serie_historica
+) VALUES 
+      {values}
+RETURNING dado_id;
+
+INSERT INTO juncao_dados_indicador(dado_id,indicador_id) VALUES 
+      {values_str};
+
+INSERT INTO dimensao_municipio (
+      numero_uf_ibge,
+      nome_uf,
+      sigla_uf,
+      numero_regiao_geografica_intermediaria,
+      nome_regiao_geografica_intermediaria,
+      numero_regiao_geografica_imediata,
+      nome_regiao_geografica_imediata,
+      numero_mesorregiao_geografica,
+      nome_mesorregiao_geografica,
+      numero_microrregiao_geografica,
+      nome_microrregiao_geografica,
+      codigo_municipio,
+      nome_municipio,
+      nome_regiao_nacional
+) VALUES (
+      {numero_uf_ibge}, '{nome_uf}', '{sigla_uf}', {numero_regiao_geografica_intermediaria}, 
+      '{nome_regiao_geografica_intermediaria}', {numero_regiao_geografica_imediata}, 
+      '{nome_regiao_geografica_imediata}', {numero_mesorregiao_geografica}, 
+      '{nome_mesorregiao_geografica}', {numero_microrregiao_geografica}, 
+      '{nome_microrregiao_geografica}', {codigo_municipio}, '{nome_municipio}', 
+      '{nome_regiao_nacional}'
+);
+
