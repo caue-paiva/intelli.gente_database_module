@@ -3,6 +3,7 @@ from intelligentedb.schema.datastructures import  Indicator, DataPoint, DataPoin
 from intelligentedb.schema.tablecreation import create_datapoints_dimension,create_indicators_dimension,create_junction_table,create_user_dtypes,create_city_dimension
 from intelligentedb import DBconnection
 from intelligentedb.schema.base_schema_files import fill_junction_table_base_vals, fill_dimension_tables_base_vals
+from intelligentedb.etl import base_query
 
 def test_dimension_and_junction_tables()->None:
    indicators = [
@@ -69,10 +70,7 @@ def test_dimension_and_junction_tables()->None:
    """)
    print(output)
    
-
-
-
-def complete_test():
+def recreate_tables():
   create_datapoints_dimension()
   create_indicators_dimension()
   create_city_dimension()
@@ -82,7 +80,10 @@ def complete_test():
   fill_dimension_tables_base_vals('municipio')
   fill_junction_table_base_vals()
 
+def etl_test():
+   pass
 
 
 if __name__ == "__main__":
+   recreate_tables()
    test_dimension_and_junction_tables()

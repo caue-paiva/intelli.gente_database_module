@@ -1,6 +1,7 @@
 import csv,os
 from typing import Literal
 from intelligentedb.schema.datastructures import DataPointIndicatorMap
+from intelligentedb.schema.tablecreation import create_fact_table
 from intelligentedb.utils import normalize_text
 from intelligentedb import DBconnection
 
@@ -48,6 +49,13 @@ def fill_dimension_tables_base_vals(dimension_name: Literal['dado', 'indicador',
       city_dimension_vals[1]
    )
    print(f"Tabela da dimensao {dimension_name} foi preenchida com os valores padrões")
+   
+   if dimension_name == 'dado':
+      print("criando tabelas de fatos para os tópicos")
+      topics:set[str] = set(map(lambda x: x[1],city_dimension_vals[1])) 
+      print(topics)
+      for topic in topics:
+         create_fact_table(topic)
 
 def __read_junction_table_csv()->list[DataPointIndicatorMap]:
    """

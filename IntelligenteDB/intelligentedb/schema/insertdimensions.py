@@ -1,5 +1,6 @@
 from intelligentedb import DBconnection
 from intelligentedb.schema.datastructures import Indicator,DataPoint,DataPointIndicatorMap
+from intelligentedb.schema.tablecreation import create_fact_table
 
 def insert_new_city(
     codigo_municipio: int,
@@ -157,5 +158,10 @@ def insert_indicators_and_datapoints(
    map_relations_to_pk = lambda x: ( data_points_pk[x.data_point], indicators_pk[x.indicator] )
    list_relations_with_pk:list[tuple[int,int]] = list(map(map_relations_to_pk,indicators_data_points_relations))
    print(list_relations_with_pk) 
-
    __insert_junction_table_vals(list_relations_with_pk)
+
+   topics:set[str] = set(map(lambda x: x.topico,data_points))
+   print(topics)
+   for topic in topics:
+      create_fact_table(topic)
+   print("Tabelas de fato por tópico foram criadas")
