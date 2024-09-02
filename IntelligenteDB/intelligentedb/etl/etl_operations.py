@@ -1,12 +1,13 @@
 from intelligentedb import DBconnection
 from intelligentedb.utils import parse_topic_table_name
+from intelligentedb.query_fact_tables import get_datapoint_dim_table_info
 import pandas as pd
 
 def insert_df_into_fact_table(df:pd.DataFrame,data_name:str,time_series_years:list[int])->int:
    """
    Tenta inserir um df numa tabela de fatos, retorna quantas linhas foram adicionadas
    """
-   fact_table_info  = __get_datapoint_fact_table_info(data_name)
+   fact_table_info  = get_datapoint_dim_table_info(data_name)
    data_point_fk: int = fact_table_info["dado_id"] # type: ignore
    existing_time_series_years:list[int] = fact_table_info["anos_serie_historica"] # type: ignore
    fact_table_name:str = parse_topic_table_name(fact_table_info["topico"])  #nome da tabela de fato é o tópico com parsing para ser um nome válido no SQL  # type: ignore
@@ -19,6 +20,7 @@ def insert_df_into_fact_table(df:pd.DataFrame,data_name:str,time_series_years:li
 
    df = __prepare_df_for_database(df=df,data_point_fk=data_point_fk,years_to_extract=years_to_insert)
    df_rows:list[tuple] = list(df.itertuples(index=False,name=None))
+   df.to_csv("antes_de_entrar.csv")
    __insert_values_fact_table(fact_table_name,df_rows)
 
    all_years: list[int] = list(set(time_series_years + existing_time_series_years)) #pega todos os anos únicos dos dados
@@ -26,22 +28,6 @@ def insert_df_into_fact_table(df:pd.DataFrame,data_name:str,time_series_years:li
    __update_time_series_year(data_name,all_years)
 
    return len(df_rows) #retorna numero de linhas do df que foi inserido
-
-def __get_datapoint_fact_table_info(data_point_name:str)->dict[str,int|str|list]:
-   """
-   Dado um dado, retorna a tabela de fato que ele pertence e os anos da série histórica desse dado
-   """
-   query = f"""--sql
-   SELECT topico,dado_id,anos_serie_historica FROM dimensao_dado
-   WHERE  LOWER(REPLACE(dimensao_dado.nome_dado, ' ', '')) = LOWER(REPLACE('{data_point_name}', ' ', ''));
-   """
-   result:list[tuple] = DBconnection.execute_query(query)
-
-   return {
-      "topico": result[0][0],
-      "dado_id": result[0][1],
-      "anos_serie_historica":result[0][2]
-   }
 
 def __insert_values_fact_table(fact_table:str,values:list[tuple])->None:
    fact_table_cols =  (
@@ -86,6 +72,10 @@ def __prepare_df_for_database(df:pd.DataFrame, data_point_fk:int, years_to_extra
    Transforma o dataframe num formato final so para entrar no banco de dados. Troca o nome do dado pela chave estrangeira da tabela dimensão de dado
    e o código de município pela chave extrangeira que aponta pra tabela de municípios e por ultimo troca a ordem das colunas para ser igual a da tabela de fato
    """
+   city_code_example = df["codigo_municipio"].iloc[-1]
+   if city_code_example < 1000000 or city_code_example > 9999999:
+      raise RuntimeError("Código do muncípio não tem 7 dígitos")
+   
    df["dado_identificador"] = data_point_fk #troca coluna de nome de dados por uma foreign key que referencia a tabela dimen
    df["codigo_municipio"] = __replace_city_codes_with_pk(df["codigo_municipio"]) #troca código do município pela fk desse munic na tabela de dimensao
    df = df.rename(

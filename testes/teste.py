@@ -100,8 +100,8 @@ def drop_all_tables():
 
 
 if __name__ == "__main__":
-   #val = get_datapoint_fact_table_info('Pib percapita')
+   #val = get_datapoint_dim_table_info('Pib percapita')
    #print(val)
-   df = pd.read_csv("CAPAG_PROCESSADO1.csv")
+   df = pd.read_csv("IN016_AE - Índice de tratamento de esgoto.csv")
    time_series_years:list[int] = list(df["ano"].value_counts().index)
-   insert_df_into_fact_table(df=df,data_name="Capacidade de pagamento dos municípios (CAPAG)",time_series_years=time_series_years)
+   insert_df_into_fact_table(df=df,data_name="IN016_AE - Índice de tratamento de esgoto",time_series_years=time_series_years)
