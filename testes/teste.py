@@ -102,6 +102,6 @@ def drop_all_tables():
 if __name__ == "__main__":
    #val = get_datapoint_fact_table_info('Pib percapita')
    #print(val)
-   df = pd.read_csv("datasus.csv")
+   df = pd.read_csv("CAPAG_PROCESSADO1.csv")
    time_series_years:list[int] = list(df["ano"].value_counts().index)
-   insert_df_into_fact_table(df=df,data_name="NVBP: Nascidos Vivos com Baixo Peso",time_series_years=time_series_years)
+   insert_df_into_fact_table(df=df,data_name="Capacidade de pagamento dos municípios (CAPAG)",time_series_years=time_series_years)
