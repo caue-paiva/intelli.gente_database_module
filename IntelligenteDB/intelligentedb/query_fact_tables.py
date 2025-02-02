@@ -1,8 +1,9 @@
 from intelligentedb import DBconnection
 
-def get_datapoint_dim_table_info(data_point_name:str)->dict[str,int|str|list[int]]:
+def get_datapoint_dim_table_info(data_point_name:str)-> dict | None:
    """
    Dado o nome de um dado, retorna a tabela de fato que ele pertence e os anos da série histórica desse dado.
+   Caso esse dado não esteja mapeado na tabela dimensao_dados, retorna none
 
    Args:
       data_point_name (str): Nome do dado
@@ -20,6 +21,8 @@ def get_datapoint_dim_table_info(data_point_name:str)->dict[str,int|str|list[int
    WHERE  LOWER(REPLACE(dimensao_dado.nome_dado, ' ', '')) = LOWER(REPLACE('{data_point_name}', ' ', ''));
    """
    result:list[tuple] = DBconnection.execute_query(query)
+   if not result:
+      return None
 
    return {
       "topico": result[0][0],

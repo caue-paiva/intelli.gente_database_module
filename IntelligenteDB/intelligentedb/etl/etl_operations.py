@@ -7,10 +7,14 @@ def insert_df_into_fact_table(df:pd.DataFrame,data_name:str,time_series_years:li
    """
    Tenta inserir um df numa tabela de fatos, retorna quantas linhas foram adicionadas
    """
-   fact_table_info  = get_datapoint_dim_table_info(data_name)
-   data_point_fk: int = fact_table_info["dado_id"] # type: ignore
-   existing_time_series_years:list[int] = fact_table_info["anos_serie_historica"] # type: ignore
-   fact_table_name:str = parse_topic_table_name(fact_table_info["topico"])  #nome da tabela de fato é o tópico com parsing para ser um nome válido no SQL  # type: ignore
+   fact_table_info: dict | None  = get_datapoint_dim_table_info(data_name)
+   if fact_table_info is None:
+      print("Dado não foi encontrado na tabela de dimensao_dados")
+      return 0
+
+   data_point_fk: int = fact_table_info["dado_id"]
+   existing_time_series_years:list[int] = fact_table_info["anos_serie_historica"]
+   fact_table_name:str = parse_topic_table_name(fact_table_info["topico"])  #nome da tabela de fato é o tópico com parsing para ser um nome válido no SQL
 
 
    years_to_insert:list[int] = [year for year in time_series_years if year not in existing_time_series_years]
