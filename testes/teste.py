@@ -85,7 +85,7 @@ def recreate_tables():
 
 def drop_all_tables():
    """
-   Não rodar isso em produção :)
+   Não rodar isso em produção!
    """
    list_tables_query = """
    SELECT table_name 
@@ -106,4 +106,5 @@ def teste_qualquer_query(query:str):
    pass
 
 if __name__ == "__main__":
+   #drop_all_tables()
    recreate_tables()

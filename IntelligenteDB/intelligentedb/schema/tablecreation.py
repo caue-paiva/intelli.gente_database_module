@@ -5,13 +5,22 @@ def create_user_dtypes()->None:
    """
    Cria tipos de dados definidos pelo usuário, necessário para executar as outras funções
    """
-   query = """
-      CREATE TYPE TIPO_INDICADOR AS ENUM ('principal','adicional','n/a');
-      CREATE TYPE RELEVANCIA_INDICADOR AS ENUM ('alta','media','baixa','n/a');
-      CREATE TYPE TIPO_DADOS_EXTRAIDOS AS ENUM ('int','float','str','bool');
-      CREATE TYPE FORMA_EXTRACAO AS ENUM ('api','webscrapping','ftp');
-   """
-   DBconnection.execute_query(query,return_data=False)
+   user_types = {
+        "TIPO_INDICADOR": "ENUM ('principal', 'adicional', 'n/a')",
+        "RELEVANCIA_INDICADOR": "ENUM ('alta', 'media', 'baixa', 'n/a')",
+        "TIPO_DADOS_EXTRAIDOS": "ENUM ('int', 'float', 'str', 'bool')",
+        "FORMA_EXTRACAO": "ENUM ('api', 'webscrapping', 'ftp')"
+    }
+
+   #conecta ao BD e verifica se tipos já existem
+   for type_name, type_definition in user_types.items():
+        check_query = f"""SELECT 1 FROM pg_type WHERE typname = '{type_name.lower()}' """
+        result = DBconnection.execute_query(check_query, return_data=True)
+
+        
+        if not result:
+            create_query = f"CREATE TYPE {type_name} AS {type_definition}"
+            DBconnection.execute_query(create_query, return_data=False)
 
 def create_city_dimension()->None:
    """

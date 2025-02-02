@@ -2,36 +2,261 @@ data_point,indicator
 PIB Agropecuária,PIB Agropecuária
 PIB Indústria,PIB Indústria
 PIB Serviços,PIB Serviços
-PIB Administração Pública,PIB Administração Pública  
+PIB Administração Pública,PIB Administração Pública
 PIB TOTAL,
 PIB per capita,PIB per capita do município
 População total estimada do município,População total estimada do município
-Domicílios particulares permanentes,Índice de pavimentação das vias públicas 
-Domicílios particulares permanentes com existência de calçamento/pavimentação da rua,Índice de pavimentação das vias públicas 
+Domicílios particulares permanentes,Índice de pavimentação das vias públicas
+Domicílios particulares permanentes com existência de calçamento/pavimentação da rua,Índice de pavimentação das vias públicas
 Índice de GINI da renda domiciliar per capita,Índice de GINI da renda domiciliar per capita
 Taxa de analfabetismo,Taxa de analfabetismo
 obitos maternos,Mortalidade materna
-NVBP: Nascidos Vivos com Baixo Peso,Índice de risco e proteção à saúde dos nascidos vivos 
-NVPN: Nascidos Vivos com Baixo Pré-Natal,Índice de risco e proteção à saúde dos nascidos vivos 
-Leitos hospitalares na rede pública municipal,Leitos hospitalares na rede pública municipal  
+NVBP: Nascidos Vivos com Baixo Peso,Índice de risco e proteção à saúde dos nascidos vivos
+NVPN: Nascidos Vivos com Baixo Pré-Natal,Índice de risco e proteção à saúde dos nascidos vivos
+Leitos hospitalares na rede pública municipal,Leitos hospitalares na rede pública municipal
 nascidos vivos,Mortalidade materna
-nascidos vivos,Índice de risco e proteção à saúde dos nascidos vivos 
+nascidos vivos,Índice de risco e proteção à saúde dos nascidos vivos
 Médicos disponíveis na rede pública municipal,Médicos disponíveis na rede pública municipal
-População ocupada com vínculo formal,População ocupada com vínculo formal 
+População ocupada com vínculo formal,População ocupada com vínculo formal
 Capacidade de pagamento dos municípios (CAPAG),Capacidade de pagamento dos municípios (CAPAG)
 Taxa de homicídios,Taxa de homicídios
-Índice de desenvolvimento humano do município (IDH-M),Índice de desenvolvimento humano do município (IDH-M) 
-IN015_AE - Índice de coleta de esgoto,Índice de volume de esgoto coletado 
+Índice de desenvolvimento humano do município (IDH-M),Índice de desenvolvimento humano do município (IDH-M)
+IN015_AE - Índice de coleta de esgoto,Índice de volume de esgoto coletado
 IN015_RS - Taxa de cobertura do serviço de coleta de resíduo doméstico em relação à população total do município,Taxa da população coberta com serviço de coleta de resíduos
 IN022_AE - Consumo médio percapita de água,Consumo médio per capita de água
-IN049_AE - Índice de perdas na distribuição,Índice de perdas na distribuição de água 
-IN055_AE - Índice de atendimento total de água,Índice da população total com atendimento de água 
+IN049_AE - Índice de perdas na distribuição,Índice de perdas na distribuição de água
+IN055_AE - Índice de atendimento total de água,Índice da população total com atendimento de água
 CS001 - Existe coleta seletiva formalizada pela prefeitura no município?,Coleta seletiva de resíduos no município
-IN056_AE - Índice de atendimento total de esgoto referido aos municípios atendidos com água,Índice da população total com atendimento de esgoto 
+IN056_AE - Índice de atendimento total de esgoto referido aos municípios atendidos com água,Índice da população total com atendimento de esgoto
 IN024_AE - Índice de atendimento urbano de esgoto referido aos municípios atendidos com água,Índice da população urbana com atendimento de esgoto
 IN053_RS - Taxa de material recolhido pela coleta seletiva (exceto mat. orgânica) em relação à quantidade total coletada de resíduos sólidos domésticos,Percentual de material recolhido pela coleta seletiva
 IN016_AE - Índice de tratamento de esgoto,Índice de volume de esgoto tratado
 Nível da Hierarquia para as Regiões de Influência das Cidades (VAR09),Rede de influência da cidade
 Classe Denominação da Hierarquia para as Regiões de Influência das Cidades (VAR10),Rede de influência da cidade
-Escala de acesso a banda larga fixa,Escala de acesso a banda larga fixa 
-Escala de acesso a banda larga móvel,Escala de acesso a banda larga móvel 
+Escala de acesso a banda larga fixa,Escala de acesso a banda larga fixa
+Escala de acesso a banda larga móvel,Escala de acesso a banda larga móvel
+PO007 - Drenagem urbana e manejo de águas pluviais,Drenagem urbana e manejo de águas pluviais
+PO028 - Existência do plano municipal de saneamento básico,Plano municipal de saneamento básico
+AG018 - Volume de água tratada importado,Índice de volume de água tratada importado
+AG006 -Volume de água produzido,Índice de volume de água tratada importado
+PO048 -Existência do Plano Municipal de Gestão Integrada de Resíduos Sólidos (PMGIRS),Plano Municipal de Gestão Integrada de Resíduos Sólidos 
+Empregos em Turismo,Empregos em Turismo
+Empresas de TICs no municipio,Empresas de TICs no municipio
+Empregos em TIC,Empregos em TIC
+Vagas no ensino superior,Vagas no ensino superior
+Taxas de distorção idade-série,Taxas de distorção idade-série
+total de óbitos infantis por residencia,Mortalidade Infantil
+Domicílios particulares permanentes com Existência de iluminação pública no entorno,Índice de iluminação de vias públicas
+Domicílios particulares permanentes urbanos com Existência de arborização de vias públicas,Índice de arborização de vias públicas
+Índice de desenvolvimento da educação básica (IDEB) - anos finais ,Índice de desenvolvimento da educação básica (IDEB) - anos finais
+IN_COMP_PORTATIL_ALUNO,Indice de equipamentos de tecnologia disponíveis nas escolas públicas municipais
+IN_DESKTOP_ALUNO,Indice de equipamentos de tecnologia disponíveis nas escolas públicas municipais
+IN_EQUIP_LOUSA_DIGITAL,Indice de equipamentos de tecnologia disponíveis nas escolas públicas municipais
+IN_EQUIP_MULTIMIDIA,Indice de equipamentos de tecnologia disponíveis nas escolas públicas municipais
+IN_INTERNET_APRENDIZAGEM,Indice de equipamentos de tecnologia disponíveis nas escolas públicas municipais
+IN_INTERNET_APRENDIZAGEM,Indice de equipamentos de tecnologia disponíveis nas escolas públicas municipais
+IN_TABLET_ALUNO,Indice de equipamentos de tecnologia disponíveis nas escolas públicas municipais
+Serviços informativos - MTIC121,Serviços no website da prefeitura
+Acesso a documentos - MTIC122,Serviços no website da prefeitura
+Informações gerais sobre licitações - MTIC123,Serviços no website da prefeitura
+Ouvidoria e serviços de atendimento ao cidadão - MTIC124,Serviços no website da prefeitura
+Fazer download de documentos ou formulários - MTIC125,Serviços no website da prefeitura
+Consulta a processos/acompanhamento de protocolos - MTIC126,Serviços no website da prefeitura
+Consulta prévia - MTIC127,Serviços no website da prefeitura
+Cadastramento de fornecedores - MTIC1210,Serviços no website da prefeitura
+Concurso público - MTIC129,Serviços no website da prefeitura
+"Diário oficial, legislação municipal e finanças públicas - MTIC128",Serviços no website da prefeitura
+Emissão certidão negativa de débito - MTIC1211,Serviços no website da prefeitura
+Emissão alvará - MTIC1212,Serviços no website da prefeitura
+Emissão nota fiscal eletrônica - MTIC1213,Serviços no website da prefeitura
+Matrícula escolar na rede pública online - MTIC1214,Serviços no website da prefeitura
+Agendamento de consulta na rede pública de saúde - MTIC1215,Serviços no website da prefeitura
+Emitir guia de pagamento de tributos - MTIC1216,Serviços no website da prefeitura
+"Emissão de documentos como licenças, certidões, permissões e outros documentos - MTIC1217",
+Pesquisa de satisfação relacionada aos serviços prestados pela prefeitura - MTIC1218,Serviços no website da prefeitura
+Existe disponibilidade de dados ou sistemas do município de forma georreferenciada - MREG012,Sistema de informação geográfica da prefeitura
+Existe disponibilidade de dados ou sistemas do município de forma informatizada - MREG011,Sistema de informação geográfica da prefeitura
+Existem dados de bases cartográficas do cadastro imobiliário urbano - MREG01,Sistema de informação geográfica da prefeitura
+Existem dados de planta genérica de valores - MREG031,Sistema de informação geográfica da prefeitura
+Existe sistema de informações do cadastro imobiliário urbano na web ou em rede - MREG013,Sistema de informação geográfica da prefeitura
+Existe cobrança de IPTU no município - MREG02,Sistema de informação geográfica da prefeitura
+Existe cadastro ISSQN - MREG05,Sistema de informação geográfica da prefeitura
+Existe ISSQN informatizado - MREG051,
+Existe Portal de dados abertos - MTIC272,Dados abertos da gestão municipal
+Existe Legislação municipal para garantir direito de acesso à informação pública em conformidade com a Lei de Acesso à Informação - MGOV01,Dados abertos da gestão municipal
+Dados de orçamentos são publicados - MGOV0715,
+Dados de receitas são publicados - MGOV0725,Dados abertos da gestão municipal
+Dados de despesas são publicados - MGOV0735,Dados abertos da gestão municipal
+Dados de balanços são publicados - MGOV0745,
+Dados de prestação de contas da Lei de Responsabilidade Fiscal são publicados - MGOV0755,Dados abertos da gestão municipal
+Dados de compras e licitações são publicados - MGOV0765,Dados abertos da gestão municipal
+Dados individualizados das remunerações de servidores são publicados - MGOV0775,Dados abertos da gestão municipal
+Existe disponibilização de portal da transparencia - MTIC271,Dados abertos da gestão municipal
+Desenvolve programa ou ação de inclusão digital - MTIC19,Promoção de inclusão digital
+Cursos de capacitação - MTIC214,Cursos de capacitação tecnológica
+Ponte entre parceiros para ações menos favorecidos - MTIC213,Promoção de inclusão digital
+Instalação de computadores rede pública de ensino - MTIC215,Promoção de inclusão digital
+Instalação de rede wi-fi rede pública de ensino - MTIC216,Promoção de inclusão digital
+Conselho Municipal de Direitos Humanos - existência - MDHU12,Formas presenciais para participação pública
+Conselho Municipal de Direitos da Criança e do Adolescente - existência - MDHU18,Formas presenciais para participação pública
+Conselho Municipal de Direitos da Pessoa Idosa - existência - MDHU24,Formas presenciais para participação pública
+Conselho Municipal de Direitos da Pessoa com Deficiência - existência - MDHU30,Formas presenciais para participação pública
+"Conselho Municipal de Direitos de Lésbicas, Gays, Bissexuais, Travestis e Transexuais - existência - MDHU36",Formas presenciais para participação pública
+Conselho Municipal de Igualdade Racial - existência - MDHU42,
+Conselho Municipal dos Povos e Comunidades Tradicionais - MDHU48,
+"Utiliza grupos de discussões, foruns ou comunidades - MTIC252",Formas presenciais para participação pública
+Qual o tipo de conexão que interliga os equipamentos e edifícios públicos da prefeitura? - MTIC04,
+"Consulta pública on-line para que cidadãos possam enviar contribuições para leis, orçamentos e planos - MTIC251",Formas on-line para participação pública
+Grupo de discussão foruns ou comunidades - MTIC252,Formas on-line para participação pública
+Enquetes on-line - MTIC253,Formas on-line para participação pública
+Votação on-line - MTIC254,Formas on-line para participação pública
+Não disponibiliza formas de participação pública on-line - MTIC255,
+Centro de processamento de dados (CPD) - existência - MTIC08,
+Centro de controle e operações - MTIC263,Centros de comando e controle para gestão da cidade
+Sistema de iluminação inteligente - MTIC264,Centros de comando e controle para gestão da cidade
+Sensores para monitoramento de área de risco - MTIC266,Centros de comando e controle para gestão da cidade
+Bilhete eletrônico transporte público - MTIC261,Serviços e soluções inteligentes para mobilidade urbana
+Ônibus municipal com GPS - MTIC262,Serviços e soluções inteligentes para mobilidade urbana
+Semáforos inteligentes - MTIC265,Serviços e soluções inteligentes para mobilidade urbana
+Disponibiliza para acesso público - MTIC211,Cursos de capacitação tecnológica
+Existência de estrutura organizacional para TIC no municipio - MTIC06,Estrutura Organizacional de TIC
+Funcionários efetivos - MTIC071,
+Servidores Cedidos - MTIC072,
+Comissionados - MTIC074,
+Terceirizados - MTIC075,
+Consultores - MTIC076,
+"Disponibilização de informações, execução orçamentaria e financeira Lei Complementar 131/2009 - MGOV06",
+Disponibilização em tempo real - MGOV061,
+Orçamento publicado - MGOV0715,
+Receitas publicadas - MGOV0725,
+Despesas publicadas - MGOV0735,
+Correio - MTIC011,Solicitação de Serviços Públicos
+Fax - MTIC012,Solicitação de Serviços Públicos
+Jornais - MTIC013,Solicitação de Serviços Públicos
+Internet - MTIC014,Solicitação de Serviços Públicos
+Telefone - MTIC015,Solicitação de Serviços Públicos
+Facebook - MTIC131,Solicitação de Serviços Públicos
+Instagran - MTIC132,Solicitação de Serviços Públicos
+Youtube - MTIC133,Solicitação de Serviços Públicos
+Whathsaap - MTIC136,Solicitação de Serviços Públicos
+Twiter - MTIC139,
+Pesquisa satisfação serviço público - MTIC1218,
+"O município desenvolve ações, programas ou projetos de qualificação profissional e intermediação de mão de obra - MTIP07",
+Ações de qualificação profissional - MTIP081,
+Ações de intermediação de mão de obra - MTIP082,
+Ações de mobilização e sensibilização para cursos de qualificação profissional - MTIP083,
+"O município desenvolve ações, programas ou projetos de inclusão produtiva urbana - MTIP09",
+Ações de fomento a empreendimentos individuais urbanos - MTIP101,
+"Ações fomento a empreendimentos coletivos urbanos (Associativismo, Cooperativismo e Economia Solidária urbana e outros grupos não formalizados - MTIP102",
+"Ações de assistência técnico-gerencial a empreendimentos individuais urbanos (para formalização, melhora da produção, aspectos jurídicos e comerciais) - MTIP103",
+Ações de incubação de empreendimentos - MTIP104,
+Ações de fomento ao artesanato - MTIP105,
+Ações de doação de equipamentos ou kit básico para desempenho do trabalho - MTIP106,
+"O município desenvolve ações, programas ou projetos de crédito, microcrédito e seguro - MTIP11",
+Ações para promover o acesso a microcrédito produtivo orientado - MTIP121,
+Ações de acesso a crédito por meio do Banco do Povo ou outras organizações congêneres - MTIP122,
+Ações de acesso a crédito do Proger urbano - MTIP123,
+"O município desenvolve ações, programas ou projetos de geração de trabalho e renda - MTIP13",
+"Projeto(s) de apoio à comercialização de negócios, cooperativas e empreendimento solidários - MTIP141",
+"Projeto(s) de apoio ao associativismo, cooperativismo e economia solidária - MTIP142",
+Se no município existe algum organismo executivo de políticas para as mulheres - MPPM01,
+Promove capacitação em gênero para outras áreas do governo - MPPM101,
+Articula com outros órgãos municipais a incorporação da questão de gênero na formulação e/ou implementação de políticas - MPPM102,
+Executa diretamente políticas para a promoção e igualdade de gênero - MPPM103,
+Executa diretamente políticas para o enfrentamento da violência - MPPM104,
+Executa diretamente políticas para a promoção da autonomia das mulheres (geração de renda e fomento ao empreendedorismo) - MPPM105,
+Povos indígenas - MASS261,
+Povos ciganos - MASS262,
+Comunidades quilombolas - MASS263,
+Ribeirinhos - MASS264,
+Povos de matriz africana - MASS265,
+Outros povos ou comunidades tradicionais - MASS266,
+População em situação de rua - MASS267,
+Agricultores familiares - MASS268,
+Assentados da reforma agrária - MASS269,
+Pescadores artesanais - MASS2610,
+Catadores de materiais recicláveis - MASS2611,
+Migrantes/Imigrantes/Refugiados - MASS2612,
+Atingidas por empreendimentos de infraestrutura - MASS2613,
+Encarcerado/egressos do sistema carcerário - MASS2614,
+Mecanismos de controle e fiscalização para evitar ocupação em áreas suscetíveis aos desastres - MGRD183,
+"Sistema de alerta antecipado de desastres decorrente de enchentes, inundações ou enxurradas - MGRD186",
+Cadastro de risco - MGRD187,
+Mapeamentos de áreas de risco de enchentes ou inundações - MGRD201,
+Sistema de alerta antecipado de desastre decorrente de escorregamento ou deslizamento de encosta - MGRD206,
+Coordenação municipal de proteção e defesa civil - MGRD212,
+Sistema de alerta antecipado de desastres de defesa civil - MGRD2213,
+Barco - MTRA181,
+Metrô - MTRA182,
+Mototáxi - MTRA183,
+Táxi - MTRA184,
+Trem - MTRA185,
+Van - MTRA186,
+Avião - MTRA187,
+Transporte coletivo por ônibus intramunicipal - MTRA19,
+Transporte coletivo por ônibus intermunicipal - MTRA23,
+Conselho Municipal de Meio Ambiente ou similar - MMAM10,Proteção e gestão do meio ambiente e áreas verdes do município
+Existe área responsável pelo tema meio ambiente dispõe de recursos financeiros específicos para serem utilizados no desenvolvimento de suas ações - MMAM16,Proteção e gestão do meio ambiente e áreas verdes do município
+Legislação ou instrumento de gestão ambiental sobre gestão de bacias hidrográficas - MMAM203,Proteção e gestão do meio ambiente e áreas verdes do município
+Legislação ou instrumento de gestão ambiental sobre área e/ou zona de proteção ou controle ambiental - MMAM204,Proteção e gestão do meio ambiente e áreas verdes do município
+Legislação ou instrumento de gestão ambiental sobre permissão de atividades extrativas minerais - MMAM207,Proteção e gestão do meio ambiente e áreas verdes do município
+Legislação ou instrumento de gestão ambiental sobre fauna silvestre - MMAM208,Proteção e gestão do meio ambiente e áreas verdes do município
+Legislação ou instrumento de gestão ambiental sobre florestas - MMAM209,Proteção e gestão do meio ambiente e áreas verdes do município
+Legislação ou instrumento de gestão ambiental sobre proteção à biodiversidade - MMAM2012,Proteção e gestão do meio ambiente e áreas verdes do município
+Plano Municipal de Transporte contempla a inclusão de pessoas com deficiência na rede viária e no sistema de transporte - MTRA086,
+Frota de ônibus municipais adaptada para pessoas com deficiência ou mobilidade reduzida - MTRA21,
+Piso baixo - MTRA221,
+Piso alto com acesso realizado por plataforma de embarque/desembarque - MTRA222,
+Piso alto equipado com plataforma elevatória veicular - MTRA223,
+Cadastro ou levantamento de famílias interessadas em programas habitacionais - MHAB18,
+O cadastro é informatizado - MHAB182,
+O cadastro inclui a natureza do benefício habitacional pretendido pelas famílias - MHAB183,
+Construção de unidades habitacionais - MHAB201,
+Aquisição de unidades habitacionais - MHAB202,
+Melhoria de unidades habitacionais - MHAB203,
+Oferta de material de construção - MHAB204,
+Oferta de lotes - MHAB205,
+Regularização fundiária - MHAB206,
+Urbanização de assentamentos - MHAB207,Urbanização de assentamentos - MHAB207
+A prefeitura tem algum programa que conceda o benefício do aluguel social - MHAB21,
+O município foi atingido pela seca nos últimos 4 anos - MGRD01,
+O município foi atingido por alagamentos nos últimos 4 anos - MGRD06,
+O município foi atingido por processo erosivo acelerado nos últimos 4 anos - MGRD07,
+O município foi atingido por enchentes ou inundações graduais nos últimos 4 anos - MGDR08,
+O município foi atingido por enxurradas ou inundações bruscas nos últimos 4 anos - MGDR11,
+O município foi atingido por escorregamentos ou deslizamentos de encostas nos últimos 4 anos - MGDR14,
+"Favelas, mocambos, palafitas ou assemelhados - MHAB191",
+"Cortiços, casas de cômodos ou cabeças-de-porco - MHAB192",
+Loteamentos irregulares e/ou clandestinos - MHAB193,
+Ocupações de terrenos ou prédios por movimentos de moradia - MHAB194,
+Plano Municipal de Transporte contempla o uso pelo pedestre e pelo ciclista do espaço viário de uso público - MTRA085,
+Ciclovia no município - existência - MTRA24,
+Bicicletário no município - existência - MTRA25,
+Bibliotecas públicas - MCUL3901,
+Museus - MCUL3902,
+Teatros ou salas de espetáculos - MCUL3903,
+Centro cultural - MCUL3904,
+Arquivo público e/ou centro de documentação - MCUL3905,
+Estádios ou ginásios poliesportivos - MCUL3906,
+Centro de artesanato - MCUL3907,
+Banca de jornal - existência - MCUL3908,
+Cinema - existência - MCUL3909,
+Videolocadora - existência - MCUL3910,
+Shopping center - existência - MCUL3911,
+"Lojas de discos, CDs, fitas e DVDs - existência - MCUL3912",
+Livrarias - existência - MCUL3913,
+Galerias de arte - MCUL3914,
+Clube e associação recreativa - existência - MCUL3916,
+Lan house - existência - MCUL3917,
+Circo fixo - existência - MCUL3918,
+Concha acústica - existência - MCUL3919,
+Ponto de cultura - MCUL40,
+Legislação municipal de proteção ao patrimônio cultural - existência - MCUL15,
+Patrimônio material - MCUL161,
+Patrimônio imaterial - MCUL162,
+Conselho municipal de cultura - existência - MCUL19,
+Projetos voltados para a educação do campo - MEDU131,
+Projetos voltados para educação de povos indígenas - MEDU132,
+Projetos voltados para educação quilombolas - MEDU133,
+Projetos voltados para a educação de outros povos e comunidades tradicionais - MEDU134,
+Combate à violência nas escolas - MEDU114,

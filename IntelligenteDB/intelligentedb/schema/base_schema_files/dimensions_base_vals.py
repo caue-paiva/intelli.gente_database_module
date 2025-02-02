@@ -37,7 +37,7 @@ def __get_base_dimension_vals(dimension_name:Literal['dado','indicador','municip
             columns = tuple(row)
             column_row = False
          else:
-            data_list.append(tuple(row))
+            data_list.append(tuple(map(lambda x: x.lower(), row)))
    
    return (columns,data_list)
 
