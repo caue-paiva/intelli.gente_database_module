@@ -5,7 +5,7 @@ PIB Serviços,PIB,IBGE,api,{}
 PIB Administração Pública,PIB,IBGE,api,{}
 PIB TOTAL,PIB,IBGE,api,{}
 PIB per capita,PIB,IBGE,webscrapping,{}
-População total estimada do município,Porte,IBGE,api,{}
+População estimada muni,Porte,IBGE,api,{}
 Domicílios particulares permanentes,Urbanização Vias Públicas,IBGE,api,{}
 Domicílios particulares permanentes com existência de calçamento/pavimentação da rua,Urbanização Vias Públicas,IBGE,api,{}
 Índice de GINI da renda domiciliar per capita,Desigualdade de Renda,DATASUS,webscrapping,{}
@@ -34,3 +34,6 @@ Nível da Hierarquia para as Regiões de Influência das Cidades (VAR09),Arranjo
 Classe Denominação da Hierarquia para as Regiões de Influência das Cidades (VAR10),Arranjos Urbanos,IBGE,webscrapping,{}
 Escala de acesso a banda larga fixa,Infraestrutura de Conectividade,ANATEL,api,{}
 Escala de acesso a banda larga móvel,Infraestrutura de Conectividade,ANATEL,api,{}
+total de óbitos infantis por residencia,Saúde,DATASUS,webscrapping,{}
+Domicílios particulares permanentes com Existência de iluminação pública no entorno,Urbanização Vias Públicas,IBGE,api,{}
+Domicílios particulares permanentes urbanos com Existência de arborização de vias públicas,Urbanização Vias Públicas,IBGE,api,{}

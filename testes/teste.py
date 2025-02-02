@@ -73,14 +73,15 @@ def test_dimension_and_junction_tables()->None:
    print(output)
    
 def recreate_tables():
-  create_datapoints_dimension()
+  create_user_dtypes()
+  create_datapoints_dimension() #cria tabelas de dimensão
   create_indicators_dimension()
   create_city_dimension()
   create_junction_table()
-  fill_dimension_tables_base_vals('dado')
+  fill_dimension_tables_base_vals('dado') #preenche tabelas de dimensão
   fill_dimension_tables_base_vals('indicador')
   fill_dimension_tables_base_vals('municipio')
-  fill_junction_table_base_vals()
+  fill_junction_table_base_vals() #preenche tabela de junção
 
 def drop_all_tables():
    """
@@ -105,31 +106,4 @@ def teste_qualquer_query(query:str):
    pass
 
 if __name__ == "__main__":
-   #val = get_datapoint_dim_table_info('Pib percapita')
-   #print(val)
-   #df = pd.read_csv("IN016_AE - Índice de tratamento de esgoto.csv")
-   #time_series_years:list[int] = list(df["ano"].value_counts().index)
-   #insert_df_into_fact_table(df=df,data_name="IN016_AE - Índice de tratamento de esgoto",time_series_years=time_series_years)
-   table_name: str = "fato_topico_agua_e_esgoto"
-   query = f"""--sql
-   SELECT 
-    pg_size_pretty(pg_table_size('{table_name}')) AS table_size,
-    pg_size_pretty(pg_indexes_size('{table_name}')) AS indexes_size,
-    pg_size_pretty(pg_total_relation_size('{table_name}')) AS total_size;
-   """
-
-   query2 = f"""--sql
-      SELECT
-         column_name,
-         data_type,
-         is_nullable,
-         column_default
-      FROM
-         information_schema.columns
-      WHERE
-         table_name = '{table_name}'
-         AND table_schema = 'public';
-   """
-
-   
-   teste_qualquer_query(query2)
+   recreate_tables()

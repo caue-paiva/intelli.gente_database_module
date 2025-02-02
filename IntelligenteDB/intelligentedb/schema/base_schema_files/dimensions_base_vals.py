@@ -42,6 +42,10 @@ def __get_base_dimension_vals(dimension_name:Literal['dado','indicador','municip
    return (columns,data_list)
 
 def fill_dimension_tables_base_vals(dimension_name: Literal['dado', 'indicador', 'municipio']):
+   """
+   Preenche tabelas de dimensão ('dado', 'indicador', 'municipio) com valores padrões ditados pelos arquivos CSV dimensao_{nome_dim}.csv 
+   presentes nesse folder.
+   """
    city_dimension_vals:tuple[tuple,list] = __get_base_dimension_vals(dimension_name)
    result = DBconnection.insert_many_values(
       f"dimensao_{dimension_name}",

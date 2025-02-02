@@ -15,7 +15,8 @@ class DBconnection():
    def get_connection(cls)-> connection:
       if cls.__CONNECTION is None:
          cls.__CONNECTION = psycopg2.connect(
-            host=os.getenv("DB_HOST"),
+            host=os.getenv("DB_HOST"),      # e.g., "192.168.1.100"
+            port=os.getenv("DB_PORT"), 
             database=os.getenv("DB_NAME"),
             user=os.getenv("DB_USERNAME"),
             password=os.getenv("DB_PASSWORD")

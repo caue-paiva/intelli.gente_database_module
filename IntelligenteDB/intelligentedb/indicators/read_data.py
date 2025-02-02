@@ -9,4 +9,4 @@ def get_datapoints(datapoint_name:str,years:list[int] = [])->pd.DataFrame:
    fact_table_name:str = parse_topic_table_name(dimension_table_info["topico"])
    time_series_years:list[int] = dimension_table_info["anos_serie_historica"]
    
-
+   return pd.DataFrame()
