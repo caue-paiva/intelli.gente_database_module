@@ -23,8 +23,16 @@ def insert_df_into_fact_table(df:pd.DataFrame,data_name:str,time_series_years:li
       return 0
 
    df = __prepare_df_for_database(df=df,data_point_fk=data_point_fk,years_to_extract=years_to_insert)
-   df_rows:list[tuple] = list(df.itertuples(index=False,name=None))
-   df.to_csv("antes_de_entrar.csv")
+   
+   
+   df_rows:list[tuple] = []
+   for row in df.itertuples(index=False,name=None):
+      df_rows.append(
+         tuple(map(lambda x: x.lower() if isinstance(x,str) else x, row))
+      )
+   
+   
+   #df.to_csv("antes_de_entrar.csv")
    __insert_values_fact_table(fact_table_name,df_rows)
 
    all_years: list[int] = list(set(time_series_years + existing_time_series_years)) #pega todos os anos únicos dos dados
