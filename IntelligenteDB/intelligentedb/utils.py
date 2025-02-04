@@ -27,4 +27,29 @@ def parse_topic_table_name(data_topic:str)->str:
     
     #truncar para o tamanho max de um identificador do postgres
     return f"fato_topico_{str_[:63]}"
+
+def to_postgres_list(py_list:list)->str:
+    """
+    Converte uma lista Python em uma string de lista do PostgreSQL.
+    
+    Args:
+        py_list (list): A lista Python a ser convertida.
+    
+    Return:
+        str: Uma string formatada como uma lista do PostgreSQL.
+    """
+    if not py_list:
+        return "()"
+    
+    def format_item(item):
+        #se o item for uma sstring, coloca ele em aspas duplas
+        if isinstance(item, str):
+            escaped = item.replace("'", "''")
+            return f"'{escaped}'"
+        
+        #senao apenas converte para str
+        return str(item)
+    
+    formatted_items = ",".join(format_item(item) for item in py_list)
+    return f"({formatted_items})"
     

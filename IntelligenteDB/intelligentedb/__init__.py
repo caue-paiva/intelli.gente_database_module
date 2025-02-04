@@ -67,8 +67,9 @@ class DBconnection():
             query_result = c.fetchall()
          cls.__CONNECTION.commit() # type: ignore
       if not query_result and return_data:
-         raise RuntimeError(f"Falha ao executar a Query: {query}")
+         print(f"Query Executada mas não retornou resultados")
       return query_result
+   
    
    @classmethod
    def insert_many_values(

@@ -2,6 +2,7 @@ from intelligentedb.schema.insertdimensions import insert_indicators_and_datapoi
 from intelligentedb.schema.datastructures import  Indicator, DataPoint, DataPointIndicatorMap
 from intelligentedb.schema.tablecreation import create_datapoints_dimension,create_indicators_dimension,create_junction_table,create_user_dtypes,create_city_dimension
 from intelligentedb import DBconnection
+from intelligentedb.indicators import get_datapoints_values
 from intelligentedb.schema.base_schema_files import fill_junction_table_base_vals, fill_dimension_tables_base_vals
 from intelligentedb.etl import insert_df_into_fact_table
 import pandas as pd
@@ -106,5 +107,7 @@ def teste_qualquer_query(query:str):
    pass
 
 if __name__ == "__main__":
-   #drop_all_tables()
-   recreate_tables()
+   df = get_datapoints_values("pib total",[2015,2016])
+   if df is not None:
+      print(df.info())
+   
