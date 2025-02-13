@@ -125,3 +125,4 @@ def create_fact_table(table_or_topic_name:str)->None:
    );
    """
    DBconnection.execute_query(query,return_data=False)
+   
