@@ -20,6 +20,7 @@ def get_datapoints_values(datapoint_name:str,years:list[int] = [])->pd.DataFrame
    dimension_table_info:dict | None = get_datapoint_dim_table_info(datapoint_name) #pega nome do tópico do dado
    if dimension_table_info is None:
       return None
+   id_dado: int = dimension_table_info["dado_id"]
 
    fact_table_name:str = parse_topic_table_name(dimension_table_info["topico"]) #acha o nome da tabela fato a partir do tópico
    
@@ -28,12 +29,13 @@ def get_datapoints_values(datapoint_name:str,years:list[int] = [])->pd.DataFrame
       
       query = F"""-- beginsql
       SELECT ano,tipo_dado,valor,municipio_id FROM {fact_table_name}
-      WHERE ano in {pg_years_list};
+      WHERE ano in {pg_years_list} and  dado_id = {id_dado};
       -- endsql
       """
    else:
       query = f"""-- beginsql
-      SELECT ano,tipo_dado,valor,municipio_id FROM {fact_table_name};
+      SELECT ano,tipo_dado,valor,municipio_id FROM {fact_table_name}
+      WHERE dado_id = {id_dado};
       -- endsql
       """
 

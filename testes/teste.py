@@ -107,10 +107,10 @@ def teste_qualquer_query(query:str):
    pass
 
 if __name__ == "__main__":
-   #df = get_datapoints_values("pib total",[2015,2016])
-   #if df is not None:
-     # print(df.info())
+   df = get_datapoints_values("pib total",[2015,2016])
+   if df is not None:
+      print(df.info())
    
-   df = get_city_dimension_values()
-   print(df.head())
+   #df = get_city_dimension_values()
+   #print(df.head())
    
