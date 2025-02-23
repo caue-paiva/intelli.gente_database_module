@@ -1,6 +1,6 @@
 from intelligentedb import DBconnection
 from intelligentedb.utils import parse_topic_table_name, to_postgres_list
-from intelligentedb.query_fact_tables import get_datapoint_dim_table_info
+from intelligentedb.query_fact_tables import get_datapoint_dim_table_info,get_indicador_dim_table_info
 import pandas as pd
 
 
@@ -43,6 +43,58 @@ def get_datapoints_values(datapoint_name:str,years:list[int] = [])->pd.DataFrame
 
    if query_result:
       dtype = query_result[0][1] #pega o tipo de dado do dado
+      data_dict = {"valor":[],"ano":[],"municipio_id":[]}
+
+      for line in query_result:
+         data_dict["ano"].append(line[0])
+         data_dict["valor"].append(line[2])
+         data_dict["municipio_id"].append(line[3])
+      
+      df = pd.DataFrame(data_dict)
+      df["valor"] = df["valor"].astype(dtype)
+
+      return df
+   else:
+      return None
+
+def get_indicators_values(indicator_name:str,years:list[int] = [])->pd.DataFrame | None:
+   """
+   Retorna os valores de um indicador armazenado numa tabela de indicador_fato,
+   com a possibilidade de filtrar pelos anos dos dados
+
+   Args:
+      indicator_name (str): O nome do indicador a ser recuperado.
+      years (list[int], optional): Lista de anos para filtrar os dados. Se não fornecido, retorna todos os anos.
+   
+   Returns:
+         pd.DataFrame | None: Um DataFrame contendo os valores do indicadores e os anos correspondentes,
+                        ou None se os indicadores não forem encontrados.
+   """
+
+   dimension_table_info:dict | None = get_indicador_dim_table_info(indicator_name) #pega nome do tópico do dado
+   indicator_id:int = int(dimension_table_info["indicator_id"])
+   topic:str = dimension_table_info["topico"]
+
+   fact_table_name = parse_topic_table_name(topic,indicator_table=True)
+
+   if years: #tem que filtrar por certos anos
+      pg_years_list:str = to_postgres_list(years)
+      
+      query = F"""-- beginsql
+      SELECT ano,tipo_dado,valor,municipio_id FROM {fact_table_name}
+      WHERE ano in {pg_years_list} and  indicador_id = {indicator_id};
+      -- endsql
+      """
+   else:
+      query = f"""-- beginsql
+      SELECT ano,tipo_dado,valor,municipio_id FROM {fact_table_name}
+      WHERE indicador_id = {indicator_id};
+      -- endsql
+      """
+
+   query_result = DBconnection.execute_query(query)
+   if query_result:
+      dtype = query_result[0][1] #pega o tipo de dado do indicador
       data_dict = {"valor":[],"ano":[],"municipio_id":[]}
 
       for line in query_result:

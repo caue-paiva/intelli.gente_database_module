@@ -1,38 +1,13 @@
 from intelligentedb import DBconnection
-from intelligentedb.utils import parse_topic_table_name, normalize_text,replace_city_codes_with_pk
-from intelligentedb.query_fact_tables import get_datapoint_dim_table_info
+from intelligentedb.utils import parse_topic_table_name,replace_city_codes_with_pk
+from intelligentedb.query_fact_tables import get_indicador_dim_table_info
 import pandas as pd
 
 INDICATOR_SCORE_NULL_VAL = -1 #valor a ser inserido no lugar da nota do indicador quando o valor for nulo
 
 
-def __normalize_text_for_indicators(indicator_name:str)->str:
-   """
-   Normaliza texto para esse caso específico de comparação de nomes de indicadores: deixa tudo lowercase,
-   e tirar espaço e underline
-   """
-   return indicator_name.replace("_","") \
-                        .replace(" ","") \
-                        .lower()
 
-def __get_indicator_info(indicator_name:str)->dict:
-   parsed_name = __normalize_text_for_indicators(indicator_name)
-   query = f"""--sql
-   SELECT indicador_id,topico FROM dimensao_indicador
-   WHERE  LOWER(REPLACE(dimensao_indicador.nome_indicador, ' ', '')) = '{parsed_name}'; 
-   """
 
-   result = DBconnection.execute_query(query)
-
-   if len(result) == 0:
-      raise IOError("Falha ao achar o ID do indicador {indicator_name} na tabela dimensao_indicador")
-   
-   return {
-      "indicator_id": result[0][0],
-      "topico": result[0][1]
-   }
-
-      
 def insert_df_indicators_table(df:pd.DataFrame,has_indicator_score = False)->None:
    """
    Insere os dados de um indicador (no formato de DF) na tabela de fatos (indicador_fato) correspondente
@@ -51,7 +26,7 @@ def insert_df_indicators_table(df:pd.DataFrame,has_indicator_score = False)->Non
       raise RuntimeError("Dataframe passado como argumento deve ter mais de uma linha")
    
    indicator_name:str = df["indicador"].iloc[0]
-   indicator_info :dict = __get_indicator_info(indicator_name)
+   indicator_info :dict = get_indicador_dim_table_info(indicator_name)
    indicator_id:int = int(indicator_info["indicator_id"])
    topic:str = indicator_info["topico"]
    table_name:str = parse_topic_table_name(topic,indicator_table=True)

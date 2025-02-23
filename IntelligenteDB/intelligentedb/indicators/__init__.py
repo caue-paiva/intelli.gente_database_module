@@ -1,2 +1,2 @@
-from .read_data import get_datapoints_values,get_city_dimension_values
-from .insert_indicators import insert_df_indicators_table
+from .read_data import get_datapoints_values,get_city_dimension_values,get_indicators_values
+from .insert_indicators import insert_df_indicators_table,get_indicador_dim_table_info
