@@ -106,7 +106,6 @@ def teste_qualquer_query(query:str):
    pass
 
 if __name__ == "__main__":
-   indicator = "Índice_de_perdas_na_distribuição_de_água"
    df = pd.read_csv("teste_indicadores.csv")
-   insert_df_indicators_table(indicator,df)
+   insert_df_indicators_table(df)
    

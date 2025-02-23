@@ -33,17 +33,24 @@ def __get_indicator_info(indicator_name:str)->dict:
    }
 
       
-def insert_df_indicators_table(indicator_name:str,df:pd.DataFrame,has_indicator_score = False)->None:
+def insert_df_indicators_table(df:pd.DataFrame,has_indicator_score = False)->None:
    """
-   Insere os dados de um indicador (no formato de DF) na tabela de fatos dos indicadores correspondente
+   Insere os dados de um indicador (no formato de DF) na tabela de fatos (indicador_fato) correspondente
 
    Args:
-      indicator_name (str): nome do indicador
-      df (pd.DataFrame): dados do indicador
+      df (pd.DataFrame): Dados do indicador. Tem que ter as colunas: (ano,codigo_municipio,valor,indicador,tipo_dado)
+         e de forma opcional uma coluna com a nota do indicador
+
       has_indicator_score (bool): diz se o df dos dados do indicador tem a nota do indicador 
    
+   Return:
+      (None)
    """
 
+   if df.shape[0] < 1:
+      raise RuntimeError("Dataframe passado como argumento deve ter mais de uma linha")
+   
+   indicator_name:str = df["indicador"].iloc[0]
    indicator_info :dict = __get_indicator_info(indicator_name)
    indicator_id:int = int(indicator_info["indicator_id"])
    topic:str = indicator_info["topico"]
