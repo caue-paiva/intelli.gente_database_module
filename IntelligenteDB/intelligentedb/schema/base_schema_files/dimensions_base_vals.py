@@ -1,7 +1,7 @@
 import csv,os
 from typing import Literal
 from intelligentedb.schema.datastructures import DataPointIndicatorMap
-from intelligentedb.schema.tablecreation import create_fact_table
+from intelligentedb.schema.tablecreation import create_fact_table_datapoints,create_fact_table_indicators
 from intelligentedb.utils import normalize_text
 from intelligentedb import DBconnection
 
@@ -57,9 +57,9 @@ def fill_dimension_tables_base_vals(dimension_name: Literal['dado', 'indicador',
    if dimension_name == 'dado':
       print("criando tabelas de fatos para os tópicos")
       topics:set[str] = set(map(lambda x: x[1],city_dimension_vals[1])) 
-      print(topics)
       for topic in topics:
-         create_fact_table(topic)
+         create_fact_table_datapoints(topic) #cria tabela de fato para os dados e os indicadores calculados a partir dos dados
+         create_fact_table_indicators(topic)
 
 def __read_junction_table_csv()->list[DataPointIndicatorMap]:
    """

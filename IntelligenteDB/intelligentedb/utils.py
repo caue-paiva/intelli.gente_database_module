@@ -12,7 +12,7 @@ def normalize_text(input_str:str)->str:
    str_ =  "".join(filter(lambda x: x in string.printable, str_))
    return str_.replace(" ","").lower()
 
-def parse_topic_table_name(data_topic:str)->str:
+def parse_topic_table_name(data_topic:str,indicator_table = False)->str:
     """
     Transforma o nome de um tópico de um indicador em um nome de tabela aceitado pelo PG SQL e padronizado, começando com fato_topico_
     """
@@ -26,7 +26,11 @@ def parse_topic_table_name(data_topic:str)->str:
     str_ = re.sub(r'[^a-zA-Z0-9_]', '', str_)
     
     #truncar para o tamanho max de um identificador do postgres
-    return f"fato_topico_{str_[:63]}"
+
+    if indicator_table:
+        return f"indicador_fato_topico_{str_[:52]}"
+    else:
+        return f"fato_topico_{str_[:63]}"
 
 def to_postgres_list(py_list:list)->str:
     """

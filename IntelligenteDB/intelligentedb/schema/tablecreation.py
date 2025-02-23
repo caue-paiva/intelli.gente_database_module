@@ -110,7 +110,7 @@ def create_junction_table()->None:
    DBconnection.execute_query(query,return_data=False)
    print("Tabela de junção entre indicadores e dados criada")
 
-def create_fact_table(table_or_topic_name:str)->None:
+def create_fact_table_datapoints(table_or_topic_name:str)->None:
    table_or_topic_name = parse_topic_table_name(table_or_topic_name)
    query = f"""--sql
    CREATE TABLE IF NOT EXISTS {table_or_topic_name} (
@@ -122,6 +122,27 @@ def create_fact_table(table_or_topic_name:str)->None:
       ano INT NOT NULL CONSTRAINT numero_eh_ano CHECK (ano BETWEEN 1980 AND EXTRACT(YEAR FROM CURRENT_DATE)), --valor do ano deve estar entre 1980 e ano atual
       tipo_dado TIPO_DADOS_EXTRAIDOS NOT NULL, --enum pro tipo dos dado extraídos
       valor VARCHAR(20) NOT NULL -- valor será guardado como string e extraído conforme o tipo acima
+   );
+   """
+   DBconnection.execute_query(query,return_data=False)
+
+def create_fact_table_indicators(table_or_topic_name:str)->None:
+   table_or_topic_name = parse_topic_table_name(table_or_topic_name,indicator_table=True)
+   query = f"""--sql
+   CREATE TABLE IF NOT EXISTS  {table_or_topic_name} (
+      fato_id SERIAL PRIMARY KEY,
+
+      municipio_id INT,
+      CONSTRAINT fk_municipio FOREIGN KEY (municipio_id) REFERENCES dimensao_municipio(municipio_id), --fk pra dimensão município
+      
+      indicador_id INT,
+      CONSTRAINT fk_indicador FOREIGN KEY (indicador_id) REFERENCES dimensao_indicador(indicador_id), --fk para dimensão indicador
+
+      ano INT NOT NULL CONSTRAINT numero_eh_ano CHECK (ano BETWEEN 1980 AND EXTRACT(YEAR FROM CURRENT_DATE)), --valor do ano deve estar entre 1980 e ano atual
+      tipo_dado TIPO_DADOS_EXTRAIDOS NOT NULL, --enum pro tipo dos dado extraídos
+      valor VARCHAR(20) NOT NULL, -- valor será guardado como string e extraído conforme o tipo acima
+
+      nivel_maturidade INT --nível de maturidade do indicador entre 1 e 7 (mas pode ser nulo)
    );
    """
    DBconnection.execute_query(query,return_data=False)

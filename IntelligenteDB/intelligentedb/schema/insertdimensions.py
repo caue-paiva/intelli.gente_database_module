@@ -1,6 +1,6 @@
 from intelligentedb import DBconnection
 from intelligentedb.schema.datastructures import Indicator,DataPoint,DataPointIndicatorMap
-from intelligentedb.schema.tablecreation import create_fact_table
+from intelligentedb.schema.tablecreation import create_fact_table_datapoints,create_fact_table_indicators
 
 def insert_new_city(
     codigo_municipio: int,
@@ -163,5 +163,7 @@ def insert_indicators_and_datapoints(
    topics:set[str] = set(map(lambda x: x.topico,data_points))
    print(topics)
    for topic in topics:
-      create_fact_table(topic)
+      create_fact_table_datapoints(topic) #cria tabelas de fato do dados brutos e dos indicadores
+      create_fact_table_indicators(topic)
+
    print("Tabelas de fato por tópico foram criadas")
