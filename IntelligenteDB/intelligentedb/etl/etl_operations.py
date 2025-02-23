@@ -1,5 +1,5 @@
 from intelligentedb import DBconnection
-from intelligentedb.utils import parse_topic_table_name
+from intelligentedb.utils import parse_topic_table_name,replace_city_codes_with_pk
 from intelligentedb.query_fact_tables import get_datapoint_dim_table_info
 import pandas as pd
 
@@ -70,14 +70,6 @@ def __update_time_series_year(data_name:str,new_time_series_years:list[int])->No
    """
    DBconnection.execute_query(query,False)
 
-def __replace_city_codes_with_pk(city_codes:pd.Series)->pd.Series:
-   query = """
-   SELECT municipio_id,codigo_municipio FROM dimensao_municipio;
-   """
-   query_result = DBconnection.execute_query(query)
-   city_code_to_pk:dict[int,int] = {city_code:city_pk for city_pk,city_code  in query_result} #dict cuja key é o codigo do munic e o valor é a pk da tabela de dimensao do municipio
-
-   return city_codes.map(city_code_to_pk)
 
 def __prepare_df_for_database(df:pd.DataFrame, data_point_fk:int, years_to_extract:list[int])->pd.DataFrame:
    """
@@ -89,7 +81,7 @@ def __prepare_df_for_database(df:pd.DataFrame, data_point_fk:int, years_to_extra
       raise RuntimeError("Código do muncípio não tem 7 dígitos")
    
    df["dado_identificador"] = data_point_fk #troca coluna de nome de dados por uma foreign key que referencia a tabela dimen
-   df["codigo_municipio"] = __replace_city_codes_with_pk(df["codigo_municipio"]) #troca código do município pela fk desse munic na tabela de dimensao
+   df["codigo_municipio"] = replace_city_codes_with_pk(df["codigo_municipio"]) #troca código do município pela fk desse munic na tabela de dimensao
    df = df.rename(
       {
          "dado_identificador":"dado_id",

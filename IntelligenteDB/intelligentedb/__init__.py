@@ -93,6 +93,7 @@ class DBconnection():
             flattened_values = [item for sublist in batch_values for item in sublist] #cria uma lista pegando cada item de cada tupla na lista
             query = f"INSERT INTO {table_name} ({columns}) VALUES {placeholders};" #cria a query
             try:
+                print(flattened_values)
                 c.execute(query, flattened_values)
             except psycopg2.Error as e:
                print(f"Database error: {e.pgerror}")
