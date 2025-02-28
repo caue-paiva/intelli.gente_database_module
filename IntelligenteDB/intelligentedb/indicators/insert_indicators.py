@@ -58,7 +58,7 @@ def insert_df_indicators_table(df:pd.DataFrame,has_indicator_score = False)->Non
             (codigo_municipio,indicator_id,ano,tipo_dado,valor,INDICATOR_SCORE_NULL_VAL)
          )
 
-   print(df_rows)
+   #print(df_rows)
    DBconnection.insert_many_values(
       table_name=table_name,
       columns_tuple=fact_table_cols,
