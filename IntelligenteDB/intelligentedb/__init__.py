@@ -6,7 +6,7 @@ from typing import Generator,Any
 from functools import reduce
 import atexit
 
-load_dotenv(os.path.join(os.path.dirname(__file__), "db_connection.env"))
+load_dotenv(os.path.join(os.getcwd(), "db_connection.env"))
 
 class DBconnection():
    __CONNECTION: connection | None = None #variável de classe para conexão com db
